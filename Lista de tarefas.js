@@ -1,6 +1,5 @@
 function criarTarefa(dados) {
   console.log("Dados recebidos:\n", dados);
-
   let objetoRetorno = {
     titulo: "Minha tarefa",
     estaCompleta: true,

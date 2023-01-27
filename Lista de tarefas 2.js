@@ -1,23 +1,18 @@
 function criarTarefa(dados) {
   return dados;
 }
-
 function adicionarTarefa(tarefas, tarefa) {
   return tarefas.push(tarefa);
 }
-
 function conteTarefa(tarefas) {
   return tarefas.length;
 }
-
 function primeiraTarefaTitulo(tarefas) {
   return tarefas[0];
 }
-
 function ultimaTarefaTitulo(tarefas) {
   return tarefas[tarefas.length - 1];
 }
-
 function exportacaoDeTitulos(tarefas) {
   let titulos = tarefas.map(function (titulo) {
     return titulo.titulo;
