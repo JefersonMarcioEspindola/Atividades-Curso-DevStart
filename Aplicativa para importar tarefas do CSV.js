@@ -1,32 +1,34 @@
 class Tarefas {
-    constructor() {
+  constructor() {
     this.tarefas = [];
-    }
-    
-    importarCSV(csvString) {
-        this.tarefas = csvString.split(", ");
-    }
-    
-    obterQuantidadeDeTarefas() {
-        return this.tarefas.length;
-    }
-    
-    obterPrimeiraTarefa() {
-        return this.tarefas[0];
-    }
-    
-    obterUltimaTarefa() {
-        return this.tarefas[this.tarefas.length - 1];
-    }
-    
-    obterTarefasEmCSV() {
-        return this.tarefas.map(function(tarefa) {
-            return tarefa.toLowerCase();
-        }).join(", ");
-    }
-    }
-    // ---- Modifique apenas o código que está acima desta linha ----
-    document.write(`
+  }
+
+  importarCSV(csvString) {
+    this.tarefas = csvString.split(", ");
+  }
+
+  obterQuantidadeDeTarefas() {
+    return this.tarefas.length;
+  }
+
+  obterPrimeiraTarefa() {
+    return this.tarefas[0];
+  }
+
+  obterUltimaTarefa() {
+    return this.tarefas[this.tarefas.length - 1];
+  }
+
+  obterTarefasEmCSV() {
+    return this.tarefas
+      .map(function (tarefa) {
+        return tarefa.toLowerCase();
+      })
+      .join(", ");
+  }
+}
+// ---- tela ----
+document.write(`
     <style>
     .table {
     width: 100%;
@@ -94,21 +96,27 @@ class Tarefas {
     </div>
     </div>
     `);
-    
-    const dvListaSuspensa = document.querySelector("#dv-csv-lista-suspensa");
-    const dvCorpoTabela = document.querySelector("#dv-corpo-tabela");
-    
-    const tarefas = new Tarefas();
-    
-    function formatar() {
-    dvCorpoTabela.innerHTML = "";
-    tarefas.tarefas.forEach(function (tarefa) {
-    dvCorpoTabela.insertAdjacentHTML("beforeend", `<tr>             <th>Tarefa</th>             <td>${tarefa}</td>         </tr>`);
-    });
-    dvCorpoTabela.insertAdjacentHTML("beforeend", `<tr class="separator">             <th>Número de tarefas</th>             <td>${tarefas.obterQuantidadeDeTarefas()}</td>         </tr>         <tr>             <th>Primeira Tarefa</th>             <td>${tarefas.obterPrimeiraTarefa()}</td>         </tr>         <tr>             <th>Última Tarefa</th>             <td>${tarefas.obterUltimaTarefa()}</td>         </tr>         <tr>             <th>Tarefas em letras minusculas</th>             <td>${tarefas.obterTarefasEmCSV()}</td>         </tr>`);
-    }
-    
-    dvListaSuspensa.addEventListener("change", event => {
-    tarefas.importarCSV(dvListaSuspensa.value)
-    formatar();
-    });
+
+const dvListaSuspensa = document.querySelector("#dv-csv-lista-suspensa");
+const dvCorpoTabela = document.querySelector("#dv-corpo-tabela");
+
+const tarefas = new Tarefas();
+
+function formatar() {
+  dvCorpoTabela.innerHTML = "";
+  tarefas.tarefas.forEach(function (tarefa) {
+    dvCorpoTabela.insertAdjacentHTML(
+      "beforeend",
+      `<tr>             <th>Tarefa</th>             <td>${tarefa}</td>         </tr>`
+    );
+  });
+  dvCorpoTabela.insertAdjacentHTML(
+    "beforeend",
+    `<tr class="separator">             <th>Número de tarefas</th>             <td>${tarefas.obterQuantidadeDeTarefas()}</td>         </tr>         <tr>             <th>Primeira Tarefa</th>             <td>${tarefas.obterPrimeiraTarefa()}</td>         </tr>         <tr>             <th>Última Tarefa</th>             <td>${tarefas.obterUltimaTarefa()}</td>         </tr>         <tr>             <th>Tarefas em letras minusculas</th>             <td>${tarefas.obterTarefasEmCSV()}</td>         </tr>`
+  );
+}
+
+dvListaSuspensa.addEventListener("change", (event) => {
+  tarefas.importarCSV(dvListaSuspensa.value);
+  formatar();
+});

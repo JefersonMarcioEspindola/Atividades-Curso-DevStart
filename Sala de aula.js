@@ -1,42 +1,42 @@
 class Estatistica {
-    constructor(notas) {
+  constructor(notas) {
     this.notas = notas;
-    }
-    
-    obterNumeroTotalDeNotas() {
+  }
+
+  obterNumeroTotalDeNotas() {
     return this.notas.length;
-    }
-    
-    obterPrimeiraNota() {
+  }
+
+  obterPrimeiraNota() {
     return this.notas[0];
-    }
-    
-    obterUltimaNota() {
+  }
+
+  obterUltimaNota() {
     return this.notas[this.notas.length - 1];
-    }
-    
-    obterSomaDasNotas() {
+  }
+
+  obterSomaDasNotas() {
     let soma = 0;
-    this.notas.forEach(nota => {
-    soma += nota;
+    this.notas.forEach((nota) => {
+      soma += nota;
     });
     return soma;
-    }
-    
-    obterNotaMedia() {
+  }
+
+  obterNotaMedia() {
     return this.obterSomaDasNotas() / this.notas.length;
-    }
-    
-    exportarCsv() {
-    return this.notas.join(', ');
-    }
-    }
-    
-    let notas = [8, 9, 5, 2, 9];
-    let suasNotas = new Estatistica(notas);
-    
-    // ---- tela ----
-    document.write(`
+  }
+
+  exportarCsv() {
+    return this.notas.join(", ");
+  }
+}
+
+let notas = [8, 9, 5, 2, 9];
+let suasNotas = new Estatistica(notas);
+
+// ---- tela ----
+document.write(`
     <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
     <h2>Aplicativo Sala de Aula</h2>
     <form id="dv-form-de-notas">
@@ -68,30 +68,39 @@ class Estatistica {
     
     </div>
     `);
-    
-    let dvFormDeNotas = document.querySelector("#dv-form-de-notas");
-    let dvSuaNota = document.querySelector("#dv-sua-nota");
-    
-    let dvNotas = [10, 9, 3, 5, 8];
-    
-    function formatar(dvNotas) {
-    let dvEstatistica = new Estatistica(dvNotas);
-    console.log("Notas: " + dvNotas.join(', '));
-    let tbody = document.querySelector("#dv-tabela-estatistica tbody");
-    tbody.innerHTML =<tr>     <td>${dvEstatistica.obterNumeroTotalDeNotas()}</td>     <td>${dvEstatistica.obterPrimeiraNota()}</td>     <td>${dvEstatistica.obterUltimaNota()}</td>     </tr>;
-    
-    let tbody2 = document.querySelector("#dv-tabela-estatistica-2 tbody");
-    tbody2.innerHTML = <tr>
-    <td>${dvEstatistica.obterSomaDasNotas()}</td>
-    <td>${dvEstatistica.obterNotaMedia()}</td>
-    <td>${dvEstatistica.exportarCsv()}</td>
-    </tr>;
-    }
-    dvFormDeNotas.addEventListener("submit", event => {
-    event.preventDefault();
-    let newGrade = Number.parseInt(dvSuaNota.value, 10);
-    dvNotas.push(newGrade);
-    dvSuaNota.value = "";
-    formatar(dvNotas);
-    })
-    formatar(dvNotas);
+
+let dvFormDeNotas = document.querySelector("#dv-form-de-notas");
+let dvSuaNota = document.querySelector("#dv-sua-nota");
+
+let dvNotas = [10, 9, 3, 5, 8];
+
+function formatar(dvNotas) {
+  let dvEstatistica = new Estatistica(dvNotas);
+  console.log("Notas: " + dvNotas.join(", "));
+  let tbody = document.querySelector("#dv-tabela-estatistica tbody");
+  tbody.innerHTML = (
+    <tr>
+      {" "}
+      <td>${dvEstatistica.obterNumeroTotalDeNotas()}</td>{" "}
+      <td>${dvEstatistica.obterPrimeiraNota()}</td>{" "}
+      <td>${dvEstatistica.obterUltimaNota()}</td>{" "}
+    </tr>
+  );
+
+  let tbody2 = document.querySelector("#dv-tabela-estatistica-2 tbody");
+  tbody2.innerHTML = (
+    <tr>
+      <td>${dvEstatistica.obterSomaDasNotas()}</td>
+      <td>${dvEstatistica.obterNotaMedia()}</td>
+      <td>${dvEstatistica.exportarCsv()}</td>
+    </tr>
+  );
+}
+dvFormDeNotas.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let newGrade = Number.parseInt(dvSuaNota.value, 10);
+  dvNotas.push(newGrade);
+  dvSuaNota.value = "";
+  formatar(dvNotas);
+});
+formatar(dvNotas);

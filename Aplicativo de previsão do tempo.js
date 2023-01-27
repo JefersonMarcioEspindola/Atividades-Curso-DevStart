@@ -1,4 +1,3 @@
-// Implemente a classe Temperatura
 class Temperatura {
   constructor(detalhes) {
     this.detalhes = detalhes;

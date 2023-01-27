@@ -1,24 +1,23 @@
 class VariantesDoNome {
-    constructor(nome) {
+  constructor(nome) {
     this.nome = nome;
-    }
-    
-    obterNumeroDeCaracteres() {
+  }
+
+  obterNumeroDeCaracteres() {
     return this.nome.length;
-    }
-    
-    obterMinusculo() {
+  }
+
+  obterMinusculo() {
     return this.nome.toLowerCase();
-    }
-    
-    obterMaiusculo() {
+  }
+
+  obterMaiusculo() {
     return this.nome.toUpperCase();
-    }
-    
-    }
-    
-    // ---- tela ----
-    document.write(`
+  }
+}
+
+// ---- tela ----
+document.write(`
     <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
         <h2>Variação de Nomes</h2>
         <div>
@@ -51,26 +50,31 @@ class VariantesDoNome {
         </table>
     </div>
     `);
-    
-    let dvResposta1 = document.querySelector("#dv-resposta-1");
-    let dvResposta2 = document.querySelector("#dv-resposta-2");
-    let dvResposta3 = document.querySelector("#dv-resposta-3");
-    
-    let dvNome = document.querySelector("#dv-seu-nome");
-    
-    dvNome.addEventListener("keyup", () => {
-    let variantesDoNome = new VariantesDoNome(dvNome.value);
 
-    try {
+let dvResposta1 = document.querySelector("#dv-resposta-1");
+let dvResposta2 = document.querySelector("#dv-resposta-2");
+let dvResposta3 = document.querySelector("#dv-resposta-3");
+
+let dvNome = document.querySelector("#dv-seu-nome");
+
+dvNome.addEventListener("keyup", () => {
+  let variantesDoNome = new VariantesDoNome(dvNome.value);
+
+  try {
     dvResposta1.textContent = variantesDoNome.obterNumeroDeCaracteres();
-    } catch (erro) {console.log(erro)}
-    
-    try {
+  } catch (erro) {
+    console.log(erro);
+  }
+
+  try {
     dvResposta2.textContent = variantesDoNome.obterMinusculo();
-    } catch (erro) {console.log(erro)}
-    
-    try {
+  } catch (erro) {
+    console.log(erro);
+  }
+
+  try {
     dvResposta3.textContent = variantesDoNome.obterMaiusculo();
-    } catch (erro) {console.log(erro)}
-    
-    });
+  } catch (erro) {
+    console.log(erro);
+  }
+});
