@@ -3,6 +3,7 @@ class Passaporte {
     this.nome = nome;
     this.sobrenome = sobrenome;
   }
+  
   obterNome() {
     return this.nome.toLowerCase();
   }
