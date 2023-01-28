@@ -2,15 +2,12 @@ class Temperatura {
   constructor(detalhes) {
     this.detalhes = detalhes;
   }
-  
   obterLocalizacao() {
     return `${this.detalhes.location.name}, ${this.detalhes.location.country}`;
   }
-
   obterIcone() {
     return this.detalhes.current.weather_icons[0];
   }
-
   obterTemperatura() {
     return this.detalhes.current.temperature + "&deg;C";
   }
